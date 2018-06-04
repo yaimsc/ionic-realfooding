@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar color="secondary"> <!--cambio de estilo al navbar -->
+  	<button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>Lista Recetas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+		<!-- Medu de lado -->
+	<ion-menu [content]="content">
+		<ion-header>
+			<ion-toolbar color="secondary"> <!--cambio de estilo al toolbar-->
+				<ion-title>Añadir Receta</ion-title>
+			</ion-toolbar>
+		</ion-header>
+		<ion-content>
+			<!-- creador de recetas-->
+			<form>
+				<ion-list>
+				  <ion-item>
+				    <ion-label color="secondary">Nombre Receta</ion-label> <!--cambio de estilo al color de los labels de los inputs-->
+				    <ion-input [(ngModel)]="nombre" name="nombre" placeholder="Nombre"></ion-input>
+				  </ion-item>
+
+				   <ion-item>
+				    <ion-label color="secondary" stacked>Ingredientes</ion-label>
+				    <ion-textarea [(ngModel)]="ingredientes" name="ingredientes" placeholder="Escribir Ingredientes"></ion-textarea>
+				  </ion-item>
+
+					<ion-item>
+					  <ion-label color="secondary" stacked>Descripcion</ion-label>
+					  <ion-textarea [(ngModel)]="descripcion" name="descripcion" placeholder="Escribr Description"></ion-textarea>
+				 	</ion-item>
+ 				</ion-list>
+				<button color="secondary" ion-button (click) = "crearReceta()"  (click) = "presentAlert()">Añadir</button>
+			</form>
+		</ion-content>
+	</ion-menu>
+
+	<ion-nav id="nav" #content [root]="rootPage">
+	</ion-nav>
+
+
+<ion-list>
+   <!-- Hacer un for que muestre un item de las recetas con la opcion de "Elegir receta" --> 
+   <div ion-item *ngFor="let item of recetas" (click)="recetaElegida(item)">
+      {{ item.nombre }} <!--saca el nombre de las recetas de la lisa-->
+    <button (click)="eliminarReceta(item)"><ion-icon name="trash"></ion-icon></button> 
+    <!--sirve para hacer clik en el icono de basura y que lleve a la funcion de eliminar-->
+  </div>
+</ion-list>
+
+</ion-content>

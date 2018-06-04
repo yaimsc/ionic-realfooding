@@ -1,0 +1,29 @@
+<!--
+  Generated template for the DescriptionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<!-- HEADER DE DESCRIPCION DE REECTA-->
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>{{ receta.nombre }}</ion-title><!--el titulo de pagina es el nombre de la receta -->
+  </ion-navbar>
+
+</ion-header>
+
+<!--CONTENIDO DE DESCRIPCIONDE RECETA-->
+<ion-content padding>
+	<!--busca la imagen de la receta y si no la encuentra pilla una por defecto-->
+	<img src="{{ receta.foto }}" onerror="this.src='../../assets/imgs/default.jpg';"/>
+	<ion-list>
+  
+     	 <p>{{ receta.ingredientes }}</p><br> <!--saca los ingredientes de la receta-->
+       <p>{{ receta.descripcion }}</p><!--saca la descripcion de la receta-->
+       
+
+
+  	</ion-list>
+</ion-content>
